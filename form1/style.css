@@ -171,3 +171,16 @@ tr:hover {
 .container nav ul li a:hover {
     background-color: #e0dcb8;
 }
+
+.img-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.img-pagina {
+    width: 100%;
+    max-height: 270px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
