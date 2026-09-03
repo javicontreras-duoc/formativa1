@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Productos</title>
+    <title>Lista de Gatos</title>
 </head>
 <body>
     <header>
@@ -11,20 +11,20 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="formulario-producto.html">Registrar productos</a></li>
+                    <li><a href="formulario-producto.html">Registrar Gatos</a></li>
                 </ul>
             </nav>
         </header>
     <div class="container">
-        <h2>Productos registrados</h2>
+        <h2>Gatos registrados</h2>
         <p id="mensajeVacio"></p>
 
-        <table id="tablaProductos">
+        <table id="tablaGatos">
             <thead>
                 <tr>
-                    <th>Código</th>
+                    <th>Color</th>
                     <th>Nombre</th>
-                    <th>Categoría</th>
+                    <th>Edad</th>
                 </tr>
             </thead>
             <tbody id="cuerpoTabla">
@@ -36,17 +36,17 @@
         const cuerpoTabla = document.getElementById("cuerpoTabla");
         const mensajeVacio = document.getElementById("mensajeVacio");
 
-        const productos = JSON.parse(localStorage.getItem("productos")) || [];
+        const gatos = JSON.parse(localStorage.getItem("gatos")) || [];
 
-        if (productos.length === 0) {
-            mensajeVacio.textContent = "No hay productos registrados.";
+        if (gatos.length === 0) {
+            mensajeVacio.textContent = "No hay gatos registrados.";
         } else {
-            productos.forEach(producto => {
+            gatos.forEach(gato => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
-                    <td>${producto.codigo}</td>
-                    <td>${producto.nombre}</td>
-                    <td>${producto.categoria}</td>
+                    <td>${gato.color}</td>
+                    <td>${gato.nombre}</td>
+                    <td>${gato.edad}</td>
                 `;
                 cuerpoTabla.appendChild(fila);
             });

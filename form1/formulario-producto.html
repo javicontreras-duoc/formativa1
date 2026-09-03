@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registro de Productos</title>
+    <title>Registro de Gatos</title>
 
 </head>
 
@@ -17,29 +17,14 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="lista-producto.html">Lista de productos</a></li>
+                    <li><a href="lista-producto.html">Lista de Gatos</a></li>
                 </ul>
             </nav>
         </header>
 
-        <h1>Agregar Producto</h1>
+        <h1>Agregar Gato</h1>
 
-        <form id="formProducto">
-
-            <!-- Código -->
-            <div class="campo">
-
-                <label for="codigo">Código</label>
-
-                <input
-                    type="text"
-                    id="codigo"
-                    name="codigo"
-                    placeholder="Ingrese código">
-
-                <span id="errorCodigo" class="error"></span>
-
-            </div>
+        <form id="formGato">
 
             <!-- Nombre -->
             <div class="campo">
@@ -56,26 +41,38 @@
 
             </div>
 
-            <!-- Categoría -->
+            <!-- Color -->
             <div class="campo">
 
-                <label for="categoria">Categoría</label>
+                <label for="color">Color</label>
 
-                <select id="categoria" name="categoria">
+                <input
+                    type="text"
+                    id="color"
+                    name="color"
+                    placeholder="Ingrese color">
 
-                    <option value="">Seleccione una categoría</option>
-                    <option value="Computación">Computación</option>
-                    <option value="Electrónica">Electrónica</option>
-                    <option value="Accesorios">Accesorios</option>
+                <span id="errorColor" class="error"></span>
 
-                </select>
+            </div>
 
-                <span id="errorCategoria" class="error"></span>
+            <!-- Edad -->
+            <div class="campo">
+
+                <label for="edad">Edad</label>
+
+                <input
+                    type="number"
+                    id="edad"
+                    name="edad"
+                    placeholder="Ingrese edad">
+
+                <span id="errorEdad" class="error"></span>
 
             </div>
 
             <button type="submit">
-                Agregar Producto
+                Agregar Gato
             </button>
             <button
                 type="reset"
@@ -92,7 +89,7 @@
     <script>
 
         const formulario =
-            document.getElementById("formProducto");
+            document.getElementById("formGato");
 
         formulario.addEventListener("submit", function(event) {
 
@@ -100,28 +97,28 @@
             event.preventDefault();
 
             // Obtener valores
-            const codigo =
-                document.getElementById("codigo").value.trim();
+            const color =
+                document.getElementById("color").value.trim();
 
             const nombre =
                 document.getElementById("nombre").value.trim();
 
-            const categoria =
-                document.getElementById("categoria").value;
+            const edad =
+                document.getElementById("edad").value.trim();
 
             // Limpiar mensajes
-            document.getElementById("errorCodigo").textContent = "";
+            document.getElementById("errorColor").textContent = "";
             document.getElementById("errorNombre").textContent = "";
-            document.getElementById("errorCategoria").textContent = "";
+            document.getElementById("errorEdad").textContent = "";
             document.getElementById("mensaje").textContent = "";
 
             let valido = true;
 
-            // Validar código
-            if (codigo === "") {
+            // Validar color
+            if (color === "") {
 
-                document.getElementById("errorCodigo")
-                    .textContent = "Debe ingresar el código.";
+                document.getElementById("errorColor")
+                    .textContent = "Debe ingresar el color.";
 
                 valido = false;
             }
@@ -135,11 +132,11 @@
                 valido = false;
             }
 
-            // Validar categoría
-            if (categoria === "") {
+            // Validar edad
+            if (edad === "") {
 
-                document.getElementById("errorCategoria")
-                    .textContent = "Debe seleccionar una categoría.";
+                document.getElementById("errorEdad")
+                    .textContent = "Debe ingresar la edad.";
 
                 valido = false;
             }
@@ -147,21 +144,21 @@
             // Resultado
             if (valido) {
 
-                const productos = JSON.parse(localStorage.getItem("productos")) || [];
+                const gatos = JSON.parse(localStorage.getItem("gatos")) || [];
 
-                const producto = {
-                    codigo: codigo,
+                const gato = {
+                    color: color,
                     nombre: nombre,
-                    categoria: categoria
+                    edad: edad
                 };
 
-                productos.push(producto);
+                gatos.push(gato);
 
-                localStorage.setItem("productos", JSON.stringify(productos));
+                localStorage.setItem("gatos", JSON.stringify(gatos));
 
                 document.getElementById("mensaje")
                     .textContent =
-                    "Producto agregado correctamente.";
+                    "Gato agregado correctamente.";
 
                 formulario.reset();
             }
