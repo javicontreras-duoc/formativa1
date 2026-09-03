@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro de Productos</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h2>Menú</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="lista-producto.html">Lista de productos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h1>Agregar Producto</h1>
+
+        <form id="formProducto">
+
+            <!-- Código -->
+            <div class="campo">
+
+                <label for="codigo">Código</label>
+
+                <input
+                    type="text"
+                    id="codigo"
+                    name="codigo"
+                    placeholder="Ingrese código">
+
+                <span id="errorCodigo" class="error"></span>
+
+            </div>
+
+            <!-- Nombre -->
+            <div class="campo">
+
+                <label for="nombre">Nombre</label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Ingrese nombre">
+
+                <span id="errorNombre" class="error"></span>
+
+            </div>
+
+            <!-- Categoría -->
+            <div class="campo">
+
+                <label for="categoria">Categoría</label>
+
+                <select id="categoria" name="categoria">
+
+                    <option value="">Seleccione una categoría</option>
+                    <option value="Computación">Computación</option>
+                    <option value="Electrónica">Electrónica</option>
+                    <option value="Accesorios">Accesorios</option>
+
+                </select>
+
+                <span id="errorCategoria" class="error"></span>
+
+            </div>
+
+            <button type="submit">
+                Agregar Producto
+            </button>
+            <button
+                type="reset"
+                class="btn-limpiar">
+                Limpiar
+            </button>
+
+        </form>
+
+        <div id="mensaje" class="exito"></div>
+
+    </div>
+
+    <script>
+
+        const formulario =
+            document.getElementById("formProducto");
+
+        formulario.addEventListener("submit", function(event) {
+
+            // Evita que el formulario se envíe
+            event.preventDefault();
+
+            // Obtener valores
+            const codigo =
+                document.getElementById("codigo").value.trim();
+
+            const nombre =
+                document.getElementById("nombre").value.trim();
+
+            const categoria =
+                document.getElementById("categoria").value;
+
+            // Limpiar mensajes
+            document.getElementById("errorCodigo").textContent = "";
+            document.getElementById("errorNombre").textContent = "";
+            document.getElementById("errorCategoria").textContent = "";
+            document.getElementById("mensaje").textContent = "";
+
+            let valido = true;
+
+            // Validar código
+            if (codigo === "") {
+
+                document.getElementById("errorCodigo")
+                    .textContent = "Debe ingresar el código.";
+
+                valido = false;
+            }
+
+            // Validar nombre
+            if (nombre === "") {
+
+                document.getElementById("errorNombre")
+                    .textContent = "Debe ingresar el nombre.";
+
+                valido = false;
+            }
+
+            // Validar categoría
+            if (categoria === "") {
+
+                document.getElementById("errorCategoria")
+                    .textContent = "Debe seleccionar una categoría.";
+
+                valido = false;
+            }
+
+            // Resultado
+            if (valido) {
+
+                const productos = JSON.parse(localStorage.getItem("productos")) || [];
+
+                const producto = {
+                    codigo: codigo,
+                    nombre: nombre,
+                    categoria: categoria
+                };
+
+                productos.push(producto);
+
+                localStorage.setItem("productos", JSON.stringify(productos));
+
+                document.getElementById("mensaje")
+                    .textContent =
+                    "Producto agregado correctamente.";
+
+                formulario.reset();
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
