@@ -5,52 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registro de Gatos</title>
+    <title>Registro de Gatos🐾</title>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
     <div class="container">
-        <header>
-            <h2>Menú</h2>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="lista-producto.html">Lista de Gatos</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div class="nav-links">
+            <header>
+                <h2>Menú</h2>
+                <nav>
+                    <a href="index.html">Inicio</a><br>
+                    <a href="lista-producto.html">Lista de Gatos🐱</a>
+                </nav>
+            </header>
+        </div>
 
-        <h1>Agregar Gato</h1>
+        <h1>Agregar Gato🐾</h1>
 
         <form id="formGato">
 
             <!-- Nombre -->
             <div class="campo">
-
-                <label for="nombre">Nombre</label>
-
+                <label for="nombre">Nombre del gatito</label>
                 <input
                     type="text"
                     id="nombre"
                     name="nombre"
-                    placeholder="Ingrese nombre">
-
+                    placeholder="Ej: Pelusa">
                 <span id="errorNombre" class="error"></span>
-
             </div>
 
             <!-- Color -->
             <div class="campo">
 
-                <label for="color">Color</label>
+                <label for="color">Color de pelaje</label>
 
                 <input
                     type="text"
                     id="color"
                     name="color"
-                    placeholder="Ingrese color">
+                    placeholder="Ej: Naranja, Blanco, Gris">
 
                 <span id="errorColor" class="error"></span>
 
@@ -59,13 +56,13 @@
             <!-- Edad -->
             <div class="campo">
 
-                <label for="edad">Edad</label>
+                <label for="edad">Edad (en años)</label>
 
                 <input
                     type="number"
                     id="edad"
                     name="edad"
-                    placeholder="Ingrese edad">
+                    placeholder="Ej: 3">
 
                 <span id="errorEdad" class="error"></span>
 

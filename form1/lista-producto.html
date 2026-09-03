@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Gatos</title>
+    <title>Lista de Gatos🐱</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-            <h2>Menú</h2>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="formulario-producto.html">Registrar Gatos</a></li>
-                </ul>
-            </nav>
-        </header>
+
     <div class="container">
-        <h2>Gatos registrados</h2>
+            <div class="nav-links">
+                <header>
+                    <h2>Menú</h2>
+                    <nav>
+                        <a href="index.html">Inicio</a><br>
+                        <a href="formulario-producto.html">Registrar Gatos🐾</a>
+                    </nav>
+                </header>
+            </div>
+        <h2>Gatos registrados🐱</h2>
         <p id="mensajeVacio"></p>
 
         <table id="tablaGatos">
@@ -39,14 +41,14 @@
         const gatos = JSON.parse(localStorage.getItem("gatos")) || [];
 
         if (gatos.length === 0) {
-            mensajeVacio.textContent = "No hay gatos registrados.";
+            mensajeVacio.textContent = "Aún no hay gatitos en el registro. ¡Agrega el primero!";
         } else {
             gatos.forEach(gato => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
-                    <td>${gato.color}</td>
                     <td>${gato.nombre}</td>
-                    <td>${gato.edad}</td>
+                    <td>${gato.color}</td>
+                    <td>${gato.edad} ${gato.edad == 1 ? 'año' : 'años'}</td>
                 `;
                 cuerpoTabla.appendChild(fila);
             });
