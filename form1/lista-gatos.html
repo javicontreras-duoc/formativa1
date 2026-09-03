@@ -36,26 +36,6 @@
     </div>
     
 
-    <script>
-        const cuerpoTabla = document.getElementById("cuerpoTabla");
-        const mensajeVacio = document.getElementById("mensajeVacio");
-
-        const gatos = JSON.parse(localStorage.getItem("gatos")) || [];
-
-        if (gatos.length === 0) {
-            mensajeVacio.textContent = "Aún no hay gatitos en el registro. ¡Agrega el primero!";
-        } else {
-            gatos.forEach(gato => {
-                const fila = document.createElement("tr");
-                fila.innerHTML = `
-                    <td>${gato.nombre}</td>
-                    <td>${gato.color}</td>
-                    <td>${gato.edad} ${gato.edad == 1 ? 'año' : 'años'}</td>
-                `;
-                cuerpoTabla.appendChild(fila);
-            });
-        }
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
