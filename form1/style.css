@@ -145,3 +145,29 @@ th {
 tr:hover {
     background-color: #faf5ed;
 }
+
+.container nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.container nav ul li a {
+    display: block;
+    background-color: var(--accent-color);
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s;
+}
+
+.container nav ul li a:hover {
+    background-color: #e0dcb8;
+}
